@@ -4,7 +4,7 @@ import '../services/supabase_service.dart';
 
 class LoginPage extends StatefulWidget {
   final Function(String, Map<String, dynamic>) onLogin;
-  
+
   const LoginPage({super.key, required this.onLogin});
 
   @override
@@ -17,6 +17,14 @@ class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    // Pre-fill credentials for testing
+    _emailController.text = 'bhoomika.ai23@sahyadri.edu.in';
+    _passwordController.text = '246bhoom';
+  }
 
   Future<void> _handleLogin() async {
     if (_formKey.currentState!.validate()) {
@@ -84,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                   style: TextStyle(fontSize: 16, color: Colors.grey),
                 ),
                 const SizedBox(height: 32),
-                
+
                 // Login Form
                 Card(
                   elevation: 8,
@@ -108,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                             decoration: const InputDecoration(labelText: 'Login As'),
                           ),
                           const SizedBox(height: 16),
-                          
+
                           // Email Field
                           TextFormField(
                             controller: _emailController,
@@ -125,7 +133,7 @@ class _LoginPageState extends State<LoginPage> {
                             validator: (value) => value!.isEmpty ? 'Enter password' : null,
                           ),
                           const SizedBox(height: 24),
-                          
+
                           // Login Button
                           SizedBox(
                             width: double.infinity,
