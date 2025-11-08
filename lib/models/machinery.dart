@@ -14,6 +14,7 @@ class Machinery {
   final List<String> suitable;
   final String demand;
   final List<String> soilSuitability;
+  final String description;
 
   Machinery({
     required this.id,
@@ -31,6 +32,7 @@ class Machinery {
     required this.suitable,
     required this.demand,
     required this.soilSuitability,
+    required this.description,
   });
 
   factory Machinery.fromJson(Map<String, dynamic> json) {
@@ -50,6 +52,7 @@ class Machinery {
       suitable: List<String>.from(json['suitable'] ?? []),
       demand: json['demand'] ?? '',
       soilSuitability: List<String>.from(json['soil_suitability'] ?? []),
+      description: json['description'] ?? '',
     );
   }
 
@@ -70,6 +73,7 @@ class Machinery {
       'suitable': suitable,
       'demand': demand,
       'soil_suitability': soilSuitability,
+      'description': description,
     };
   }
 }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'machinery_catalog.dart';
+import 'my_bookings.dart';
+import 'collective_booking.dart';
+import 'profile_page.dart';
 
 class Dashboard extends StatelessWidget {
   final Map<String, dynamic> currentUser;
@@ -79,29 +82,37 @@ class Dashboard extends StatelessWidget {
                   'Browse Machinery',
                   Icons.agriculture,
                   Colors.green,
-                  () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const MachineryCatalog()),
-                    );
-                  },
+                  () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MachineryCatalog()),
+                  ),
                 ),
                 _buildActionCard(
                   'My Bookings',
-                  Icons.calendar_today,
+                  Icons.book_online,
                   Colors.blue,
-                  () {
-                    // Navigate to bookings
-                  },
+                  () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyBookingsPage()),
+                  ),
                 ),
-
                 _buildActionCard(
                   'Collective Booking',
                   Icons.group,
+                  Colors.orange,
+                  () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const CollectiveBookingPage()),
+                  ),
+                ),
+                _buildActionCard(
+                  'Profile',
+                  Icons.person,
                   Colors.purple,
-                  () {
-                    // Navigate to collective
-                  },
+                  () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ProfilePage()),
+                  ),
                 ),
               ],
             ),

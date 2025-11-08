@@ -53,5 +53,34 @@ class SupabaseService {
     return response;
   }
 
+  // Booking methods
+  static Future<List<Map<String, dynamic>>> getUserBookings(String userId) async {
+    final response = await client.from('bookings').select().eq('user_id', userId);
+    return response;
+  }
+
+  static Future<Map<String, dynamic>> createBooking(Map<String, dynamic> bookingData) async {
+    final response = await client.from('bookings').insert(bookingData).select().single();
+    return response;
+  }
+
+  static Future<void> updateBookingStatus(int bookingId, String status) async {
+    await client.from('bookings').update({'status': status}).eq('id', bookingId);
+  }
+
+  // User profile methods
+  static Future<Map<String, dynamic>> getUserProfile(String userId) async {
+    final response = await client.from('users').select().eq('id', userId).single();
+    return response;
+  }
+
+  static Future<void> updateUserProfile(String userId, Map<String, dynamic> profileData) async {
+    await client.from('users').update(profileData).eq('id', userId);
+  }
+
+  static Future<void> logout() async {
+    await client.auth.signOut();
+  }
+
   // Add more methods as needed for bookings, users, etc.
 }
